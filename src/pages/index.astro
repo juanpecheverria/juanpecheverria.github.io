@@ -1,0 +1,15 @@
+---
+// Served at /  (Spanish, default locale per D-03). Scaffold placeholder only —
+// real sections/hero/nav are Phase 2+.
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import es from "../i18n/es.json";
+
+const enHome = getRelativeLocaleUrl("en", "/");
+---
+
+<BaseLayout lang="es" title={es.title}>
+  <h1 class="text-3xl">{es.heading}</h1>
+  <p>{es.tagline}</p>
+  <a href={enHome}>{es.switchLanguage}</a>
+</BaseLayout>

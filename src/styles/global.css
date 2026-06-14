@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+/* D-02: theme tokens as CSS custom properties via Tailwind v4 @theme.
+   In v4 these color tokens auto-generate real utilities (bg-bg, text-accent, …).
+   Placeholder palette only — the real dark/technical palette is Phase 2's job. */
+@theme {
+  --color-bg: #0b0e14;
+  --color-accent: #5ee0c0;
+}

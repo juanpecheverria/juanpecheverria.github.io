@@ -1,0 +1,28 @@
+---
+// Shared HTML shell. Phase 2+ attaches the real <head> meta, nav, and theme here.
+// The locale is routed through the `lang` prop so later phases never retrofit it.
+import "../styles/global.css";
+
+interface Props {
+  lang?: string;
+  title?: string;
+}
+
+const { lang = "es", title = "Juan P. Echeverría" } = Astro.props;
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <!-- D-02 proof: bg-bg / text-accent are real utilities auto-generated from the
+       @theme tokens in global.css (Tailwind v4). NOT the v3 bg-[--color-bg] form. -->
+  <body class="bg-bg text-accent">
+    <slot />
+  </body>
+</html>
