@@ -1,0 +1,16 @@
+---
+// Served at /en/  (English per D-03). Scaffold placeholder only.
+// Uses getRelativeLocaleUrl (astro:i18n) for the cross-locale link — never hand-roll
+// locale paths, so base/prefixDefaultLocale/trailing-slash rules are respected.
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import en from "../../i18n/en.json";
+
+const esHome = getRelativeLocaleUrl("es", "/");
+---
+
+<BaseLayout lang="en" title={en.title}>
+  <h1 class="text-3xl">{en.heading}</h1>
+  <p>{en.tagline}</p>
+  <a href={esHome}>{en.switchLanguage}</a>
+</BaseLayout>
