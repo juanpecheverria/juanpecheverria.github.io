@@ -13,12 +13,37 @@ yarn-error.log*
 pnpm-debug.log*
 
 
-# environment variables
+# environment variables / secrets  (NEVER commit — this repo is PUBLIC)
 .env
-.env.production
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa*
+.npmrc
+*.secret
+secrets/
 
-# macOS-specific files
-.DS_Store
+# AI / planning artifacts  (defensive — these live in the ROOT repo, not here)
+.claude/
+.cursor/
+.aider*
+.continue/
+.planning/
+CLAUDE.md
+AGENTS.md
 
-# jetbrains setting folder
+# editor folders  (keep the shared .vscode/{extensions,launch}.json the scaffold added,
+# but never leak local settings which can contain tokens/paths)
 .idea/
+.vscode/settings.json
+*.code-workspace
+
+# OS / OneDrive junk
+.DS_Store
+Thumbs.db
+desktop.ini
+ehthumbs.db
+$RECYCLE.BIN/
