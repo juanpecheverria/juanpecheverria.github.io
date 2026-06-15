@@ -16,6 +16,9 @@ const {
   title = "Juan P. Echeverría",
   skipLabel = "Saltar al contenido",
 } = Astro.props;
+
+// Literal locale for the persistence island (I18N-03).
+const locale = lang === "en" ? "en" : "es";
 ---
 
 <!doctype html>
@@ -37,5 +40,49 @@ const {
       >{skipLabel}</a
     >
     <slot />
+
+    {/*
+      Language persistence / first-visit-redirect island (I18N-03) — the ONLY redirect
+      logic on the site, and the phase's highest-risk code (human-verify gated).
+      • Records the EXPLICIT choice when the visitor clicks the language switch.
+      • Remembers the language of the page actually being viewed.
+      • On a FRESH visit to "/" with a stored 'en' preference, redirects ONCE to the
+        HARD-CODED literal /en/ (never a value from storage/URL — open-redirect mitigation
+        T-04-REDIR), guarded by a sessionStorage flag, via location.replace (no history,
+        no loop). Never redirects from /en/, never on 'es', never auto-detects browser
+        language (v2 I18N-04). On "/" it checks the stored pref BEFORE recording 'es', so a
+        remembered EN choice is honored rather than erased by simply landing on "/".
+      • No-JS / blocked-storage → the visitor stays on the requested URL (every page is
+        fully pre-rendered); the toggle link still navigates. The redirect is a convenience,
+        never a correctness requirement.
+    */}
+    <script define:vars={{ locale }}>
+      try {
+        // 1) Record the explicit choice on a language-switch click (its hreflang is the target).
+        var sw = document.querySelector("[data-lang-switch]");
+        if (sw) {
+          sw.addEventListener("click", function () {
+            try {
+              localStorage.setItem("preferred-lang", sw.getAttribute("hreflang"));
+            } catch (e) {}
+          });
+        }
+        // 2) Remember the viewed language; honor a stored 'en' on "/" before recording 'es'.
+        if (locale === "en") {
+          localStorage.setItem("preferred-lang", "en");
+        } else if (
+          location.pathname === "/" &&
+          localStorage.getItem("preferred-lang") === "en" &&
+          !sessionStorage.getItem("lang-redirected")
+        ) {
+          sessionStorage.setItem("lang-redirected", "1");
+          location.replace("/en/");
+        } else {
+          localStorage.setItem("preferred-lang", "es");
+        }
+      } catch (e) {
+        /* storage blocked → stay on the requested URL (graceful degradation) */
+      }
+    </script>
   </body>
 </html>

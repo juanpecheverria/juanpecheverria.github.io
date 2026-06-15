@@ -1,0 +1,11 @@
+---
+// Bio section body (BIO-01). Locale-agnostic: prose arrives via the `body` prop
+// from the page's locale dict — no hard-coded copy (Pitfall 2). Body scale, inside
+// the inherited 768px Section column.
+interface Props {
+  body: string;
+}
+const { body } = Astro.props;
+---
+
+<p data-bio class="max-w-[60ch] text-fg">{body}</p>

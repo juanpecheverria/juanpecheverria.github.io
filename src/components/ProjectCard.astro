@@ -1,0 +1,47 @@
+---
+// Case-study project card (PROJ-01..04). Locale-agnostic: project + labels via props.
+// Frame labels (problem/architecture/result/viewRepo) are i18n keys so the FRAME is
+// translated, not just the content. Stack badges in the mono Label style. The repo
+// link renders ONLY when project.repo is a non-empty string (PROJ-02), and every
+// external link ships rel="noopener noreferrer" (reverse-tabnabbing, T-04-LINK).
+interface Props {
+  project: {
+    title: string;
+    problem: string;
+    architecture: string;
+    result: string;
+    stack: string[];
+    repo: string;
+  };
+  labels: { problem: string; architecture: string; result: string; viewRepo: string };
+}
+const { project, labels } = Astro.props;
+---
+
+<article class="space-y-3 rounded-lg border border-border bg-surface-2 p-6">
+  <h3 class="font-semibold text-fg">{project.title}</h3>
+  <p><span class="text-fg-subtle">{labels.problem}: </span><span class="text-fg-muted">{project.problem}</span></p>
+  <p><span class="text-fg-subtle">{labels.architecture}: </span><span class="text-fg-muted">{project.architecture}</span></p>
+  <p><span class="text-fg-subtle">{labels.result}: </span><span class="text-fg-muted">{project.result}</span></p>
+  <ul class="flex flex-wrap gap-2 pt-1">
+    {
+      project.stack.map((s) => (
+        <li class="rounded border border-border bg-surface-2 px-2 py-1 font-mono text-[0.8125rem] text-fg-muted">
+          {s}
+        </li>
+      ))
+    }
+  </ul>
+  {
+    project.repo && (
+      <a
+        href={project.repo}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex min-h-[44px] items-center text-fg hover:text-accent hover:underline focus-visible:text-accent focus-visible:underline"
+      >
+        {labels.viewRepo}
+      </a>
+    )
+  }
+</article>

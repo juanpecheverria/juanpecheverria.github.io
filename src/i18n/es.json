@@ -20,6 +20,74 @@
     "proyectos": "Proyectos",
     "contacto": "Contacto"
   },
+  "bio": {
+    "body": "Ingeniero de datos con 5 años de experiencia diseñando y operando pipelines y plataformas de datos fiables. Me enfoco en la calidad de datos, la observabilidad y en convertir datos crudos en productos que el negocio puede usar con confianza."
+  },
+  "experienceLabels": {
+    "impact": "Impacto"
+  },
+  "experience": [
+    {
+      "date": "2023 — actualidad",
+      "role": "Ingeniero de datos sénior",
+      "org": "Empresa (placeholder)",
+      "impact": "Reduje el tiempo de ejecución de los pipelines críticos en ~40% (placeholder)."
+    },
+    {
+      "date": "2021 — 2023",
+      "role": "Ingeniero de datos",
+      "org": "Empresa (placeholder)",
+      "impact": "Construí la plataforma de ingesta que procesa millones de eventos al día (placeholder)."
+    },
+    {
+      "date": "2019 — 2021",
+      "role": "Analista de datos",
+      "org": "Empresa (placeholder)",
+      "impact": "Automaticé reportes que ahorraron decenas de horas semanales (placeholder)."
+    }
+  ],
+  "projectLabels": {
+    "problem": "Problema",
+    "architecture": "Arquitectura",
+    "result": "Resultado",
+    "viewRepo": "Ver repo"
+  },
+  "projects": [
+    {
+      "title": "Plataforma de datos en la nube",
+      "problem": "Reportes lentos y datos poco fiables dispersos en silos (placeholder).",
+      "architecture": "Ingesta orquestada con Airflow y modelado con dbt sobre un data warehouse (placeholder).",
+      "result": "Datos fiables y reportes horas más rápidos para el negocio (placeholder).",
+      "stack": ["Python", "Airflow", "dbt", "Snowflake"],
+      "repo": "https://github.com/juanpecheverria/example-data-platform"
+    },
+    {
+      "title": "Pipeline de streaming en tiempo real",
+      "problem": "El negocio necesitaba métricas en minutos, no al día siguiente (placeholder).",
+      "architecture": "Eventos por Kafka procesados con Spark Structured Streaming (placeholder).",
+      "result": "Latencia de datos reducida de horas a minutos (placeholder).",
+      "stack": ["Kafka", "Spark", "AWS"],
+      "repo": ""
+    },
+    {
+      "title": "Marco de calidad de datos",
+      "problem": "Roturas silenciosas de datos llegaban a producción sin avisar (placeholder).",
+      "architecture": "Validaciones automatizadas integradas en el CI de los pipelines (placeholder).",
+      "result": "Incidentes de calidad detectados antes de impactar al negocio (placeholder).",
+      "stack": ["Python", "Great Expectations", "SQL"],
+      "repo": "https://github.com/juanpecheverria/example-data-quality"
+    }
+  ],
+  "skills": ["Python", "SQL", "Apache Spark", "Apache Airflow", "dbt", "Snowflake", "AWS", "Docker"],
+  "contact": {
+    "linkedin": "#",
+    "github": "https://github.com/juanpecheverria",
+    "email": "juan@example.com",
+    "emailLabel": "Email",
+    "copyLabel": "Copiar",
+    "copiedLabel": "Copiado",
+    "mailtoLabel": "Escribir un correo a Juan"
+  },
   "notFound": {
     "title": "Página no encontrada — Juan P. Echeverría",
     "code": "404",

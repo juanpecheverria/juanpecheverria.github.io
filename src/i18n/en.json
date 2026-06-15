@@ -20,6 +20,74 @@
     "proyectos": "Projects",
     "contacto": "Contact"
   },
+  "bio": {
+    "body": "Data engineer with 5 years of experience designing and operating reliable data pipelines and platforms. I focus on data quality, observability, and turning raw data into products the business can trust."
+  },
+  "experienceLabels": {
+    "impact": "Impact"
+  },
+  "experience": [
+    {
+      "date": "2023 — present",
+      "role": "Senior Data Engineer",
+      "org": "Company (placeholder)",
+      "impact": "Cut critical pipeline runtime by ~40% (placeholder)."
+    },
+    {
+      "date": "2021 — 2023",
+      "role": "Data Engineer",
+      "org": "Company (placeholder)",
+      "impact": "Built the ingestion platform processing millions of events per day (placeholder)."
+    },
+    {
+      "date": "2019 — 2021",
+      "role": "Data Analyst",
+      "org": "Company (placeholder)",
+      "impact": "Automated reporting that saved dozens of hours per week (placeholder)."
+    }
+  ],
+  "projectLabels": {
+    "problem": "Problem",
+    "architecture": "Architecture",
+    "result": "Result",
+    "viewRepo": "View repo"
+  },
+  "projects": [
+    {
+      "title": "Cloud data platform",
+      "problem": "Slow reports and unreliable data scattered across silos (placeholder).",
+      "architecture": "Airflow-orchestrated ingestion modeled with dbt on a data warehouse (placeholder).",
+      "result": "Reliable data and reports delivered hours faster for the business (placeholder).",
+      "stack": ["Python", "Airflow", "dbt", "Snowflake"],
+      "repo": "https://github.com/juanpecheverria/example-data-platform"
+    },
+    {
+      "title": "Real-time streaming pipeline",
+      "problem": "The business needed metrics in minutes, not the next day (placeholder).",
+      "architecture": "Kafka events processed with Spark Structured Streaming (placeholder).",
+      "result": "Data latency reduced from hours to minutes (placeholder).",
+      "stack": ["Kafka", "Spark", "AWS"],
+      "repo": ""
+    },
+    {
+      "title": "Data-quality framework",
+      "problem": "Silent data breakages reached production unnoticed (placeholder).",
+      "architecture": "Automated validations wired into the pipelines' CI (placeholder).",
+      "result": "Quality incidents caught before they impacted the business (placeholder).",
+      "stack": ["Python", "Great Expectations", "SQL"],
+      "repo": "https://github.com/juanpecheverria/example-data-quality"
+    }
+  ],
+  "skills": ["Python", "SQL", "Apache Spark", "Apache Airflow", "dbt", "Snowflake", "AWS", "Docker"],
+  "contact": {
+    "linkedin": "#",
+    "github": "https://github.com/juanpecheverria",
+    "email": "juan@example.com",
+    "emailLabel": "Email",
+    "copyLabel": "Copy",
+    "copiedLabel": "Copied",
+    "mailtoLabel": "Email Juan"
+  },
   "notFound": {
     "title": "Page not found — Juan P. Echeverría",
     "code": "404",
