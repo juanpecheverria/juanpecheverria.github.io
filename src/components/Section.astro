@@ -1,0 +1,28 @@
+---
+// Reusable numbered section (LAYOUT-01, D-11..D-14). Locale-agnostic: id/kicker/
+// title via props. Mono kicker (NN /) with subtle numeral + accent slash; <h2>
+// title; centered ~768px column; separation by spacing only (no divider rules);
+// <slot> receives the per-section structural skeleton authored in the pages.
+interface Props {
+  id: string;
+  kicker: string;
+  title: string;
+}
+const { id, kicker, title } = Astro.props;
+---
+
+<section id={id} class="mx-auto max-w-[768px] px-6 py-12 md:py-24">
+  {/* Mono kicker — numeral fg-subtle, slash accent (mono ONLY here, D-04/D-11) */}
+  <p class="font-mono text-[0.8125rem] uppercase tracking-[0.04em] text-fg-subtle">
+    {kicker}<span class="text-accent"> /</span>
+  </p>
+  <h2
+    class="mt-2 font-semibold text-fg"
+    style="font-size:clamp(1.5rem,1.2rem + 1.5vw,2rem);line-height:1.25;"
+  >
+    {title}
+  </h2>
+  <div class="mt-6">
+    <slot />
+  </div>
+</section>

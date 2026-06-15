@@ -1,6 +1,23 @@
 {
   "title": "Juan P. Echeverría — Ingeniero de Datos",
-  "heading": "Scaffold ES funcionando",
-  "tagline": "Estructura base bilingüe lista. El contenido llega en fases posteriores.",
-  "switchLanguage": "English"
+  "skipLink": "Saltar al contenido",
+  "nav": {
+    "bio": "Bio",
+    "trayectoria": "Trayectoria",
+    "proyectos": "Proyectos",
+    "contacto": "Contacto",
+    "menuLabel": "Abrir menú"
+  },
+  "hero": {
+    "name": "Juan P. Echeverría",
+    "role": "Ingeniero de datos",
+    "pitch": "Ingeniero de datos con 5 años de experiencia construyendo pipelines y plataformas de datos fiables.",
+    "cta": "Descargar CV"
+  },
+  "sections": {
+    "bio": "Bio",
+    "trayectoria": "Trayectoria",
+    "proyectos": "Proyectos",
+    "contacto": "Contacto"
+  }
 }

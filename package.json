@@ -10,7 +10,9 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "check:sections": "node scripts/check-sections.mjs",
+    "check:i18n": "node scripts/check-i18n-parity.mjs"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.1",
