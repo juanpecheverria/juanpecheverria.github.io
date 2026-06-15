@@ -1,9 +1,62 @@
 @import "tailwindcss";
 
-/* D-02: theme tokens as CSS custom properties via Tailwind v4 @theme.
-   In v4 these color tokens auto-generate real utilities (bg-bg, text-accent, …).
-   Placeholder palette only — the real dark/technical palette is Phase 2's job. */
+/* D-01/D-02/D-03: dark/technical palette as Tailwind v4 @theme tokens.
+   v4 auto-generates utilities (bg-bg, bg-surface, text-fg, text-fg-muted,
+   text-accent, border-border, font-sans, font-mono) from these names.
+   Exact hex are pre-verified >= WCAG AA against bg #0b0e14 (UI-SPEC). Do NOT
+   substitute "nicer" greys (Pitfall 4). NEVER use v3 bg-[--color-bg]; NEVER
+   add tailwind.config.js (Pitfall 1). */
 @theme {
+  /* Color — 60/30/10, layered surfaces for hierarchy (D-02) */
   --color-bg: #0b0e14;
+  --color-surface: #11151f;
+  --color-surface-2: #161b27;
+  --color-border: #232a38;
+  --color-fg: #e6edf3;
+  --color-fg-muted: #aab4c4;
+  --color-fg-subtle: #8a96a8;
   --color-accent: #5ee0c0;
+  --color-accent-ink: #0b0e14;
+
+  /* Fonts — first entry is the Astro Fonts API cssVariable (D-04).
+     Sans for all prose; mono reserved for technical details only. */
+  --font-sans: var(--font-inter), system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, "SFMono-Regular", "Cascadia Code", Consolas, monospace;
+
+  /* Spacing — 4px base unit covers the xs..4xl scale (p-1..p-24) */
+  --spacing: 0.25rem;
+}
+
+/* Smooth in-page anchor scrolling with the fixed-header offset (D-08, LAYOUT-02). */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Fixed-header offset so smooth-scrolled section targets aren't hidden under the
+   nav bar (header height ~64px + md 16px). */
+:where(#bio, #trayectoria, #proyectos, #contacto) {
+  scroll-margin-top: calc(64px + 1rem);
+}
+
+/* Visible focus ring on every keyboard-focusable element (THEME-03, Pitfall 5).
+   Never remove outlines without an equivalent visible replacement. */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* Honor reduced-motion: disable smooth scroll (D-08). */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Hide the native <details> disclosure marker so the hamburger styles cleanly
+   (the toggle itself lives in Nav.astro; Pitfall 7). */
+summary {
+  list-style: none;
+}
+summary::-webkit-details-marker {
+  display: none;
 }

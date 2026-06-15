@@ -1,0 +1,75 @@
+---
+// Fixed top nav (LAYOUT-02, D-05..D-08). Locale-agnostic: all labels arrive via
+// the `t` nav sub-dict so / (ES) and /en/ (EN) share this component.
+// Word-only anchor links (D-06); accessible no-JS <details> hamburger on mobile
+// (D-07); ES/EN switch is a structural stub this phase (D-08, real toggle Phase 4).
+interface Props {
+  t: { bio: string; trayectoria: string; proyectos: string; contacto: string; menuLabel: string };
+  switchHref: string;
+  switchLabel: string;
+}
+const { t, switchHref, switchLabel } = Astro.props;
+
+const links = [
+  { href: "#bio", label: t.bio },
+  { href: "#trayectoria", label: t.trayectoria },
+  { href: "#proyectos", label: t.proyectos },
+  { href: "#contacto", label: t.contacto },
+];
+---
+
+<nav class="fixed inset-x-0 top-0 z-50 border-b border-border bg-surface">
+  <div class="mx-auto flex h-16 max-w-[1100px] items-center justify-between px-6">
+    {/* Left: initials/name */}
+    <a href="#bio" class="font-semibold text-fg hover:text-accent focus-visible:text-accent">JE</a>
+
+    {/* Desktop: inline word-only anchor links (hidden below md) */}
+    <ul class="hidden items-center gap-8 md:flex">
+      {
+        links.map((l) => (
+          <li>
+            <a
+              href={l.href}
+              class="inline-flex min-h-[44px] items-center text-fg hover:text-accent hover:underline focus-visible:text-accent focus-visible:underline"
+            >
+              {l.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+
+    <div class="flex items-center gap-4">
+      {/* ES/EN switch slot — structural stub only this phase (D-08) */}
+      <a
+        href={switchHref}
+        class="inline-flex min-h-[44px] items-center px-2 font-mono text-sm text-fg hover:text-accent focus-visible:text-accent"
+        >{switchLabel}</a
+      >
+
+      {/* Mobile: accessible no-JS hamburger (D-07). Native <details> — no <script>. */}
+      <details class="relative md:hidden">
+        <summary
+          aria-label={t.menuLabel}
+          class="flex min-h-[44px] min-w-[44px] cursor-pointer items-center justify-center text-fg hover:text-accent focus-visible:text-accent"
+        >
+          <span aria-hidden="true">☰</span>
+        </summary>
+        <ul class="absolute right-0 mt-2 flex w-48 flex-col rounded border border-border bg-surface py-2">
+          {
+            links.map((l) => (
+              <li>
+                <a
+                  href={l.href}
+                  class="flex min-h-[44px] items-center px-4 text-fg hover:text-accent hover:underline focus-visible:text-accent focus-visible:underline"
+                >
+                  {l.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </details>
+    </div>
+  </div>
+</nav>

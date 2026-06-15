@@ -1,16 +1,81 @@
 ---
-// Served at /en/  (English per D-03). Scaffold placeholder only.
-// Uses getRelativeLocaleUrl (astro:i18n) for the cross-locale link — never hand-roll
-// locale paths, so base/prefixDefaultLocale/trailing-slash rules are respected.
+// Served at /en/ (English, per D-03). Mirror image of ../index.astro — identical
+// structure and skeletons; only dict (en.json) + lang + import depth + switch differ.
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import Nav from "../../components/Nav.astro";
+import Hero from "../../components/Hero.astro";
+import Section from "../../components/Section.astro";
 import { getRelativeLocaleUrl } from "astro:i18n";
 import en from "../../i18n/en.json";
 
 const esHome = getRelativeLocaleUrl("es", "/");
 ---
 
-<BaseLayout lang="en" title={en.title}>
-  <h1 class="text-3xl">{en.heading}</h1>
-  <p>{en.tagline}</p>
-  <a href={esHome}>{en.switchLanguage}</a>
+<BaseLayout lang="en" title={en.title} skipLabel={en.skipLink}>
+  <Nav t={en.nav} switchHref={esHome} switchLabel="ES" />
+  <main>
+    <Hero name={en.hero.name} role={en.hero.role} pitch={en.hero.pitch} cta={en.hero.cta} />
+
+    <Section id="bio" kicker="01" title={en.sections.bio}>
+      {/* Skeleton: 4 muted text-line bars hinting prose */}
+      <div class="space-y-3" aria-hidden="true">
+        <div class="h-3 w-full rounded bg-surface"></div>
+        <div class="h-3 w-11/12 rounded bg-surface"></div>
+        <div class="h-3 w-10/12 rounded bg-surface"></div>
+        <div class="h-3 w-7/12 rounded bg-surface"></div>
+      </div>
+    </Section>
+
+    <Section id="trayectoria" kicker="02" title={en.sections.trayectoria}>
+      {/* Skeleton: 3 timeline-item stubs (date stub + role-line bars) */}
+      <ul class="space-y-8" aria-hidden="true">
+        {
+          [0, 1, 2].map(() => (
+            <li class="space-y-2">
+              <div class="h-3 w-24 rounded bg-surface"></div>
+              <div class="h-3 w-2/3 rounded bg-surface"></div>
+              <div class="h-3 w-1/2 rounded bg-surface"></div>
+            </li>
+          ))
+        }
+      </ul>
+    </Section>
+
+    <Section id="proyectos" kicker="03" title={en.sections.proyectos}>
+      {/* Skeleton: 3 project-card stubs (surface-2 + border, title bar, text bars, mono badge stubs) */}
+      <div class="grid gap-6 sm:grid-cols-2" aria-hidden="true">
+        {
+          [0, 1, 2].map(() => (
+            <article class="space-y-3 rounded-lg border border-border bg-surface-2 p-6">
+              <div class="h-4 w-1/2 rounded bg-surface"></div>
+              <div class="h-3 w-full rounded bg-surface"></div>
+              <div class="h-3 w-5/6 rounded bg-surface"></div>
+              <div class="flex gap-2 pt-2">
+                <span class="inline-block h-6 w-14 rounded border border-border bg-surface-2"></span>
+                <span class="inline-block h-6 w-12 rounded border border-border bg-surface-2"></span>
+                <span class="inline-block h-6 w-16 rounded border border-border bg-surface-2"></span>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </Section>
+
+    <Section id="contacto" kicker="04" title={en.sections.contacto}>
+      {/* Skeleton: contact-method label stubs in mono Label style (no real values) */}
+      <ul class="space-y-3 font-mono text-[0.8125rem] uppercase tracking-[0.04em] text-fg-subtle">
+        {
+          ["LinkedIn", "GitHub", "Email"].map((label) => (
+            <li class="flex items-center gap-4">
+              <span class="w-24">{label}</span>
+              <span class="h-3 w-40 rounded bg-surface" aria-hidden="true"></span>
+            </li>
+          ))
+        }
+      </ul>
+    </Section>
+  </main>
+  <footer class="mx-auto max-w-[768px] px-6 py-12 text-[0.8125rem] text-fg-subtle">
+    <p>© 2026 Juan P. Echeverría</p>
+  </footer>
 </BaseLayout>

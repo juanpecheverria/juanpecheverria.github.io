@@ -1,6 +1,23 @@
 {
   "title": "Juan P. Echeverría — Data Engineer",
-  "heading": "Scaffold EN working",
-  "tagline": "Bilingual base structure ready. Content arrives in later phases.",
-  "switchLanguage": "Español"
+  "skipLink": "Skip to content",
+  "nav": {
+    "bio": "Bio",
+    "trayectoria": "Experience",
+    "proyectos": "Projects",
+    "contacto": "Contact",
+    "menuLabel": "Open menu"
+  },
+  "hero": {
+    "name": "Juan P. Echeverría",
+    "role": "Data Engineer",
+    "pitch": "Data engineer with 5 years of experience building reliable data pipelines and platforms.",
+    "cta": "Download CV"
+  },
+  "sections": {
+    "bio": "Bio",
+    "trayectoria": "Experience",
+    "proyectos": "Projects",
+    "contacto": "Contact"
+  }
 }

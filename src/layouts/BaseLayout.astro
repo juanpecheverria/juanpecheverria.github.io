@@ -1,14 +1,21 @@
 ---
-// Shared HTML shell. Phase 2+ attaches the real <head> meta, nav, and theme here.
-// The locale is routed through the `lang` prop so later phases never retrofit it.
+// Shared HTML shell. Phase 2 attaches the head meta, fonts, skip-link, and theme
+// here. The locale is routed through the `lang` prop so later phases never retrofit it.
+// Pages provide the <nav>/<main>/<footer> landmarks (one <h1> in the hero).
+import { Font } from "astro:assets";
 import "../styles/global.css";
 
 interface Props {
   lang?: string;
   title?: string;
+  skipLabel?: string;
 }
 
-const { lang = "es", title = "Juan P. Echeverría" } = Astro.props;
+const {
+  lang = "es",
+  title = "Juan P. Echeverría",
+  skipLabel = "Saltar al contenido",
+} = Astro.props;
 ---
 
 <!doctype html>
@@ -18,11 +25,17 @@ const { lang = "es", title = "Juan P. Echeverría" } = Astro.props;
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
+    {/* D-04: self-hosted fonts. Preload only the body font (Inter) per Pitfall 3. */}
+    <Font cssVariable="--font-inter" preload />
+    <Font cssVariable="--font-jetbrains-mono" />
     <title>{title}</title>
   </head>
-  <!-- D-02 proof: bg-bg / text-accent are real utilities auto-generated from the
-       @theme tokens in global.css (Tailwind v4). NOT the v3 bg-[--color-bg] form. -->
-  <body class="bg-bg text-accent">
+  <body class="bg-bg text-fg font-sans">
+    <a
+      href="#bio"
+      class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded focus:bg-surface focus:px-4 focus:py-2 focus:text-fg"
+      >{skipLabel}</a
+    >
     <slot />
   </body>
 </html>
