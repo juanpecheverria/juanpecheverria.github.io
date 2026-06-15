@@ -7,8 +7,9 @@ interface Props {
   t: { bio: string; trayectoria: string; proyectos: string; contacto: string; menuLabel: string };
   switchHref: string;
   switchLabel: string;
+  switchLang: string;
 }
-const { t, switchHref, switchLabel } = Astro.props;
+const { t, switchHref, switchLabel, switchLang } = Astro.props;
 
 const links = [
   { href: "#bio", label: t.bio },
@@ -40,9 +41,13 @@ const links = [
     </ul>
 
     <div class="flex items-center gap-4">
-      {/* ES/EN switch slot — structural stub only this phase (D-08) */}
+      {/* ES/EN switch — real per-locale URL toggle (I18N-01). hreflang/lang mark the
+          target language for correctness; the URL itself persists language (D-03). */}
       <a
         href={switchHref}
+        hreflang={switchLang}
+        lang={switchLang}
+        data-lang-switch
         class="inline-flex min-h-[44px] items-center px-2 font-mono text-sm text-fg hover:text-accent focus-visible:text-accent"
         >{switchLabel}</a
       >

@@ -1,0 +1,55 @@
+---
+// Copy-email island (CONT-02). Locale-agnostic: email + labels via props. Renders the
+// visible address as a mailto: link (no target=_blank), a Copy button, and an
+// aria-live="polite" status region. The bundled <script> (Astro inlines this tiny body)
+// uses navigator.clipboard.writeText — available because GitHub Pages serves HTTPS (a
+// secure context) — and writes ONLY the build-time-constant email, never user input
+// (Security V5 / T-04-CLIP). On any failure it does nothing destructive: the visible
+// address + mailto remain the always-present fallback (Pitfall 4). aria-live announces
+// "Copied" to screen-reader users (T-04-A11Y).
+interface Props {
+  email: string;
+  copyLabel: string;
+  copiedLabel: string;
+  mailtoLabel: string;
+}
+const { email, copyLabel, copiedLabel, mailtoLabel } = Astro.props;
+
+const linkClass =
+  "inline-flex min-h-[44px] items-center text-fg hover:text-accent hover:underline focus-visible:text-accent focus-visible:underline";
+---
+
+<div class="flex flex-wrap items-center gap-x-4 gap-y-1">
+  <a href={`mailto:${email}`} aria-label={mailtoLabel} class={linkClass}>{email}</a>
+  <button
+    type="button"
+    data-copy={email}
+    data-copied={copiedLabel}
+    class="inline-flex min-h-[44px] items-center rounded border border-border px-3 font-mono text-[0.8125rem] uppercase tracking-[0.04em] text-fg-muted hover:border-accent hover:text-accent focus-visible:border-accent focus-visible:text-accent"
+    >{copyLabel}</button
+  >
+  <span class="sr-only" aria-live="polite" data-copy-status></span>
+</div>
+
+<script>
+  document.querySelectorAll("[data-copy]").forEach((btn) => {
+    btn.addEventListener("click", async () => {
+      const text = btn.getAttribute("data-copy");
+      if (!text) return;
+      const done = btn.getAttribute("data-copied") || "";
+      const status = btn.parentElement && btn.parentElement.querySelector("[data-copy-status]");
+      const original = btn.textContent;
+      try {
+        await navigator.clipboard.writeText(text);
+        btn.textContent = done;
+        if (status) status.textContent = done;
+        setTimeout(() => {
+          btn.textContent = original;
+          if (status) status.textContent = "";
+        }, 2000);
+      } catch {
+        /* fallback: the visible address + mailto link remain usable */
+      }
+    });
+  });
+</script>

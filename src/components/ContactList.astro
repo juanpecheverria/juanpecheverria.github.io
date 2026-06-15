@@ -1,0 +1,43 @@
+---
+// Contacto links (CONT-01 / CONT-02). Locale-agnostic: contact values via props.
+// LinkedIn + GitHub are secure external links (rel="noopener noreferrer", T-04-LINK);
+// the email row is the <CopyEmail> island (mailto + visible address + Copy button +
+// aria-live). Brand names (LinkedIn/GitHub) are proper nouns, not translated copy.
+import CopyEmail from "./CopyEmail.astro";
+
+interface Props {
+  contact: {
+    linkedin: string;
+    github: string;
+    email: string;
+    emailLabel: string;
+    copyLabel: string;
+    copiedLabel: string;
+    mailtoLabel: string;
+  };
+}
+const { contact } = Astro.props;
+
+const linkClass =
+  "inline-flex min-h-[44px] items-center text-fg hover:text-accent hover:underline focus-visible:text-accent focus-visible:underline";
+---
+
+<ul class="space-y-3">
+  <li>
+    <a href={contact.linkedin} target="_blank" rel="noopener noreferrer" class={linkClass}>LinkedIn</a>
+  </li>
+  <li>
+    <a href={contact.github} target="_blank" rel="noopener noreferrer" class={linkClass}>GitHub</a>
+  </li>
+  <li class="flex flex-wrap items-center gap-x-4 gap-y-1">
+    <span class="font-mono text-[0.8125rem] uppercase tracking-[0.04em] text-fg-subtle">
+      {contact.emailLabel}
+    </span>
+    <CopyEmail
+      email={contact.email}
+      copyLabel={contact.copyLabel}
+      copiedLabel={contact.copiedLabel}
+      mailtoLabel={contact.mailtoLabel}
+    />
+  </li>
+</ul>

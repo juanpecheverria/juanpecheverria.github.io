@@ -1,0 +1,21 @@
+---
+// Skills strip (SKILL-01). Locale-agnostic: skills via props (technology names are
+// language-agnostic). Mono badges in a flex-wrap row, matching the UI-SPEC badge style.
+interface Props {
+  skills: string[];
+}
+const { skills } = Astro.props;
+---
+
+<ul class="flex flex-wrap gap-2">
+  {
+    skills.map((s) => (
+      <li
+        data-skill
+        class="rounded border border-border bg-surface-2 px-2 py-1 font-mono text-[0.8125rem] uppercase tracking-[0.04em] text-fg-muted"
+      >
+        {s}
+      </li>
+    ))
+  }
+</ul>
