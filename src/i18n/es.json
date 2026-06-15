@@ -19,5 +19,11 @@
     "trayectoria": "Trayectoria",
     "proyectos": "Proyectos",
     "contacto": "Contacto"
+  },
+  "notFound": {
+    "title": "Página no encontrada — Juan P. Echeverría",
+    "code": "404",
+    "message": "La página que buscas no existe.",
+    "homeLink": "Volver al inicio"
   }
 }

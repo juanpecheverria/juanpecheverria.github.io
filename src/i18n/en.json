@@ -19,5 +19,11 @@
     "trayectoria": "Experience",
     "proyectos": "Projects",
     "contacto": "Contact"
+  },
+  "notFound": {
+    "title": "Page not found — Juan P. Echeverría",
+    "code": "404",
+    "message": "The page you're looking for doesn't exist.",
+    "homeLink": "Back to home"
   }
 }
