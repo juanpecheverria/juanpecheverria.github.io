@@ -34,15 +34,18 @@ const ogLocale = locale === "en" ? "en_US" : "es_ES";
 const ogLocaleAlt = locale === "en" ? "es_ES" : "en_US";
 
 // JSON-LD Person (SEO-03). A build-time-constant, developer-controlled object — the
-// Astro-documented XSS-safe set:html use (no user input). The `#` LinkedIn placeholder
-// is filtered out of sameAs (the real URL lands in Phase 6).
+// Astro-documented XSS-safe set:html use (no user input). Real GitHub + LinkedIn
+// profiles land in sameAs (Phase 6); the filter drops any empty/placeholder value.
 const person = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: "Juan P. Echeverría",
   jobTitle: locale === "en" ? "Data Engineer" : "Ingeniero de datos",
   url: site.href,
-  sameAs: ["https://github.com/juanpecheverria", "#"].filter((u) => u && u !== "#"),
+  sameAs: [
+    "https://github.com/juanpecheverria",
+    "https://www.linkedin.com/in/juan-pablo-echeverria/",
+  ].filter((u) => u && u !== "#"),
 };
 ---
 

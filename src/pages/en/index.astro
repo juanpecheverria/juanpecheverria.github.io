@@ -10,6 +10,7 @@ import Timeline from "../../components/Timeline.astro";
 import ProjectCard from "../../components/ProjectCard.astro";
 import SkillStrip from "../../components/SkillStrip.astro";
 import ContactList from "../../components/ContactList.astro";
+import Footer from "../../components/Footer.astro";
 import { getRelativeLocaleUrl } from "astro:i18n";
 import en from "../../i18n/en.json";
 
@@ -25,6 +26,8 @@ const esHome = getRelativeLocaleUrl("es", "/");
       pitch={en.hero.pitch}
       cta={en.hero.cta}
       cvHref="/cv/Juan-Echeverria-CV-EN.pdf"
+      linkedin={en.contact.linkedin}
+      github={en.contact.github}
     />
 
     <Section id="bio" kicker="01" title={en.sections.bio}>
@@ -48,7 +51,5 @@ const esHome = getRelativeLocaleUrl("es", "/");
       <ContactList contact={en.contact} />
     </Section>
   </main>
-  <footer class="mx-auto max-w-[768px] px-6 py-12 text-[0.8125rem] text-fg-subtle">
-    <p>© 2026 Juan P. Echeverría</p>
-  </footer>
+  <Footer lang="en" updatedLabel={en.footer.updatedLabel} name={en.hero.name} />
 </BaseLayout>

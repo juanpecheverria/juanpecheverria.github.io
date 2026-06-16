@@ -1,0 +1,30 @@
+---
+// Build-time "last updated" footer (D-10/D-11). The date is computed ONCE at
+// `astro build` in the Node runtime (zero client JS, no island, no `client:*`) —
+// identical across both mirror pages within a single build and never hand-edited.
+// `formatToParts` + a manual join drops the Spanish "de" so ES renders
+// "junio 2026" (not "junio de 2026"); `timeZone: "UTC"` keeps the month
+// deterministic regardless of the GitHub Actions runner clock (Pitfall 3).
+// The localized LABEL ("Actualizado"/"Updated") arrives via the dict prop; only
+// the date VALUE is build-computed (not an i18n key).
+interface Props {
+  lang: "es" | "en";
+  updatedLabel: string;
+  name: string;
+}
+const { lang, updatedLabel, name } = Astro.props;
+
+const parts = new Intl.DateTimeFormat(lang, {
+  month: "long",
+  year: "numeric",
+  timeZone: "UTC",
+}).formatToParts(new Date());
+const month = parts.find((p) => p.type === "month")?.value ?? "";
+const year = parts.find((p) => p.type === "year")?.value ?? "";
+const updated = `${month} ${year}`;
+---
+
+<footer data-updated class="mx-auto max-w-[768px] px-6 py-12 text-[0.8125rem] text-fg-subtle">
+  <p>© {year} {name}</p>
+  <p class="mt-1">{updatedLabel}: {updated}</p>
+</footer>
