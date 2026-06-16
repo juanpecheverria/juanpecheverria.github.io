@@ -1,17 +1,19 @@
 ---
 // Hero / identity block (LAYOUT-03, D-09/D-10). Locale-agnostic: name/role/pitch/
 // cta via props. Sober typographic single column, ~70vh so "01 Bio" peeks below
-// the fold; years-of-experience inline in the pitch; quick-access row. External
-// links ship rel="noopener noreferrer" now even with placeholder hrefs (Security
-// T-02-03). No terminal/code motif, no split, no background ornament (D-03/D-09).
+// the fold; years-of-experience inline in the pitch; quick-access row. LinkedIn/
+// GitHub hrefs are dict-driven (Phase 6) and ship rel="noopener noreferrer"
+// (Security T-02-03). No terminal/code motif, no split, no background ornament (D-03/D-09).
 interface Props {
   name: string;
   role: string;
   pitch: string;
   cta: string;
   cvHref: string;
+  linkedin: string;
+  github: string;
 }
-const { name, role, pitch, cta, cvHref } = Astro.props;
+const { name, role, pitch, cta, cvHref, linkedin, github } = Astro.props;
 ---
 
 <section class="mx-auto flex min-h-[70vh] max-w-[768px] flex-col justify-center px-6">
@@ -27,14 +29,14 @@ const { name, role, pitch, cta, cvHref } = Astro.props;
   {/* Quick-access row (D-10). LinkedIn/GitHub external → secure markup now. */}
   <div class="mt-8 flex flex-wrap items-center gap-8">
     <a
-      href="#"
+      href={linkedin}
       target="_blank"
       rel="noopener noreferrer"
       class="inline-flex min-h-[44px] items-center text-fg hover:text-accent hover:underline focus-visible:text-accent focus-visible:underline"
       >LinkedIn</a
     >
     <a
-      href="#"
+      href={github}
       target="_blank"
       rel="noopener noreferrer"
       class="inline-flex min-h-[44px] items-center text-fg hover:text-accent hover:underline focus-visible:text-accent focus-visible:underline"

@@ -24,29 +24,29 @@
     "contacto": "Contacto"
   },
   "bio": {
-    "body": "Ingeniero de datos con 5 años de experiencia diseñando y operando pipelines y plataformas de datos fiables. Me enfoco en la calidad de datos, la observabilidad y en convertir datos crudos en productos que el negocio puede usar con confianza."
+    "body": "Ingeniero de Datos con más de 5 años de experiencia en fintech, medios y consultoría. Me especializo en diseñar arquitecturas de datos escalables (Medallion, Data Mesh) y construir pipelines ETL/ELT en la nube de punta a punta —de la extracción y transformación a la modelización y visualización— con Python, SQL, dbt, BigQuery y Airflow."
   },
   "experienceLabels": {
     "impact": "Impacto"
   },
   "experience": [
     {
-      "date": "2023 — actualidad",
-      "role": "Ingeniero de datos sénior",
-      "org": "Empresa (placeholder)",
-      "impact": "Reduje el tiempo de ejecución de los pipelines críticos en ~40% (placeholder)."
+      "date": "Dic 2025 — Presente",
+      "role": "Data Engineer",
+      "org": "Pulppo",
+      "impact": "Centralicé datos operativos (MongoDB, HubSpot, Allegra) en un Data Warehouse unificado y diseñé una arquitectura Medallion con pipelines ETL/ELT en Python, dbt y SQL para reportes estratégicos de OKRs, Finanzas y Ventas."
     },
     {
-      "date": "2021 — 2023",
-      "role": "Ingeniero de datos",
-      "org": "Empresa (placeholder)",
-      "impact": "Construí la plataforma de ingesta que procesa millones de eventos al día (placeholder)."
+      "date": "Ene 2024 — Dic 2025",
+      "role": "SSR Data Engineer",
+      "org": "Accenture (Mercado Libre)",
+      "impact": "Diseñé y optimicé pipelines ETL en BigQuery bajo arquitectura Data Mesh, con alertas automatizadas de anomalías y gestión de datos a gran escala en Google Cloud Storage."
     },
     {
-      "date": "2019 — 2021",
-      "role": "Analista de datos",
-      "org": "Empresa (placeholder)",
-      "impact": "Automaticé reportes que ahorraron decenas de horas semanales (placeholder)."
+      "date": "Nov 2022 — Dic 2023",
+      "role": "Jr Data Engineer",
+      "org": "Prexcard",
+      "impact": "Automaticé la extracción de datos y los reportes con Python y Airflow, y construí dashboards interactivos en Tableau para insights de negocio."
     }
   ],
   "projectLabels": {
@@ -62,7 +62,7 @@
       "architecture": "Ingesta orquestada con Airflow y modelado con dbt sobre un data warehouse (placeholder).",
       "result": "Datos fiables y reportes horas más rápidos para el negocio (placeholder).",
       "stack": ["Python", "Airflow", "dbt", "Snowflake"],
-      "repo": "https://github.com/juanpecheverria/example-data-platform"
+      "repo": "https://github.com/juanpecheverria"
     },
     {
       "title": "Pipeline de streaming en tiempo real",
@@ -78,14 +78,14 @@
       "architecture": "Validaciones automatizadas integradas en el CI de los pipelines (placeholder).",
       "result": "Incidentes de calidad detectados antes de impactar al negocio (placeholder).",
       "stack": ["Python", "Great Expectations", "SQL"],
-      "repo": "https://github.com/juanpecheverria/example-data-quality"
+      "repo": "https://github.com/juanpecheverria"
     }
   ],
-  "skills": ["Python", "SQL", "Apache Spark", "Apache Airflow", "dbt", "Snowflake", "AWS", "Docker"],
+  "skills": ["Python", "SQL", "BigQuery", "Airflow", "dbt", "Snowflake", "GCP", "MongoDB"],
   "contact": {
-    "linkedin": "#",
+    "linkedin": "https://www.linkedin.com/in/juan-pablo-echeverria/",
     "github": "https://github.com/juanpecheverria",
-    "email": "juan@example.com",
+    "email": "jp.echeverria@outlook.com.ar",
     "emailLabel": "Email",
     "copyLabel": "Copiar",
     "copiedLabel": "Copiado",
