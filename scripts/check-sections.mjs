@@ -97,11 +97,11 @@ const problems = [
   ...checkPage(join(distRoot, "index.html"), "dist/index.html (ES)", {
     strings: ["Juan P. Echeverría", "Ingeniero de datos"],
     toggle: { href: "/en/", text: "EN" },
-    content: { experience: 3, projects: 3, viewRepo: "Ver repo" },
+    content: { experience: 5, projects: 3, viewRepo: "Ver repo" },
   }),
   ...checkPage(join(distRoot, "en", "index.html"), "dist/en/index.html (EN)", {
     toggle: { href: "/", text: "ES" },
-    content: { experience: 3, projects: 3, viewRepo: "View repo" },
+    content: { experience: 5, projects: 3, viewRepo: "View repo" },
   }),
 ];
 
@@ -112,5 +112,5 @@ if (problems.length) {
 }
 
 console.log(
-  "✓ check-sections OK — both pages: 4 section ids, bio + 3 timeline entries + 3 project cards (1 repo:\"\" suppressed) + skills strip + contact links; hero on ES; toggle ES→/en/ + EN→/",
+  "✓ check-sections OK — both pages: 4 section ids, bio + 5 timeline entries + 3 project cards (1 repo:\"\" suppressed) + skills strip + footer + contact links; hero on ES; toggle ES→/en/ + EN→/",
 );

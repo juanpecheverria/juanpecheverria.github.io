@@ -26,9 +26,6 @@
   "bio": {
     "body": "Ingeniero de Datos con más de 5 años de experiencia en fintech, medios y consultoría. Me especializo en diseñar arquitecturas de datos escalables (Medallion, Data Mesh) y construir pipelines ETL/ELT en la nube de punta a punta —de la extracción y transformación a la modelización y visualización— con Python, SQL, dbt, BigQuery y Airflow."
   },
-  "experienceLabels": {
-    "impact": "Impacto"
-  },
   "experience": [
     {
       "date": "Dic 2025 — Presente",
@@ -47,6 +44,18 @@
       "role": "Jr Data Engineer",
       "org": "Prexcard",
       "impact": "Automaticé la extracción de datos y los reportes con Python y Airflow, y construí dashboards interactivos en Tableau para insights de negocio."
+    },
+    {
+      "date": "May 2022 — Nov 2022",
+      "role": "Jr Data Analyst",
+      "org": "Radio Mitre",
+      "impact": "Desarrollé dashboards de BI en Power BI y Tableau, y manejé bases de datos relacionales y no relacionales (MySQL, MongoDB)."
+    },
+    {
+      "date": "Ene 2021 — Abr 2022",
+      "role": "Jr Data Visualization & Reporting",
+      "org": "Accenture",
+      "impact": "Construí dashboards interactivos en Tableau y QlikView, desarrollé procesos ETL en SQL Server y automaticé tareas con Python bajo metodologías ágiles."
     }
   ],
   "projectLabels": {

@@ -1,14 +1,13 @@
 ---
-// Trayectoria timeline (TRAY-01/02). Locale-agnostic: entries + labels via props.
+// Trayectoria timeline (TRAY-01/02). Locale-agnostic: entries via props.
 // Semantic <ol> conveys chronology to assistive tech; the vertical rule + node dots
 // are decorative (aria-hidden). Dates in the mono Label style; accent rationed to the
-// node dot only (04-RESEARCH Pattern 4 / UI-SPEC). Each entry carries a quantified-
-// impact slot (TRAY-02) — placeholder copy this phase.
+// node dot only (04-RESEARCH Pattern 4 / UI-SPEC). Each entry's `impact` is the role
+// description (Phase 6 — no "Impacto" label; it is Juan's real experience copy).
 interface Props {
   entries: { date: string; role: string; org: string; impact: string }[];
-  labels: { impact: string };
 }
-const { entries, labels } = Astro.props;
+const { entries } = Astro.props;
 ---
 
 <ol class="relative ml-3 border-l border-border">
@@ -25,10 +24,7 @@ const { entries, labels } = Astro.props;
         <p class="mt-1 font-semibold text-fg">
           {e.role} · <span class="font-normal text-fg-muted">{e.org}</span>
         </p>
-        <p class="mt-1 text-fg-muted">
-          <span class="font-mono text-[0.75rem] uppercase tracking-[0.04em] text-fg-subtle">{labels.impact}: </span>
-          {e.impact}
-        </p>
+        <p class="mt-1 text-fg-muted">{e.impact}</p>
       </li>
     ))
   }
