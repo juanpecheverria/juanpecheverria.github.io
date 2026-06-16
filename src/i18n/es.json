@@ -91,6 +91,9 @@
     "copiedLabel": "Copiado",
     "mailtoLabel": "Escribir un correo a Juan"
   },
+  "footer": {
+    "updatedLabel": "Actualizado"
+  },
   "notFound": {
     "title": "Página no encontrada — Juan P. Echeverría",
     "code": "404",

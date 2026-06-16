@@ -11,6 +11,7 @@ import Timeline from "../components/Timeline.astro";
 import ProjectCard from "../components/ProjectCard.astro";
 import SkillStrip from "../components/SkillStrip.astro";
 import ContactList from "../components/ContactList.astro";
+import Footer from "../components/Footer.astro";
 import { getRelativeLocaleUrl } from "astro:i18n";
 import es from "../i18n/es.json";
 
@@ -51,7 +52,5 @@ const enHome = getRelativeLocaleUrl("en", "/");
       <ContactList contact={es.contact} />
     </Section>
   </main>
-  <footer class="mx-auto max-w-[768px] px-6 py-12 text-[0.8125rem] text-fg-subtle">
-    <p>© 2026 Juan P. Echeverría</p>
-  </footer>
+  <Footer lang="es" updatedLabel={es.footer.updatedLabel} name={es.hero.name} />
 </BaseLayout>

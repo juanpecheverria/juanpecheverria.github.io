@@ -82,6 +82,9 @@ function checkPage(distPath, label, { strings = [], toggle, content }) {
     const skills = count(html, "data-skill");
     if (skills < 1) problems.push(`${label}: Skills strip (data-skill) missing`);
 
+    // Footer "last updated" presence (D-11) — structural marker only, never the localized date string.
+    if (!html.includes("data-updated")) problems.push(`${label}: footer (data-updated) missing`);
+
     for (const c of ["mailto:", "LinkedIn", "GitHub"]) {
       if (!html.includes(c)) problems.push(`${label}: contact link "${c}" missing (CONT-01)`);
     }

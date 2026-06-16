@@ -91,6 +91,9 @@
     "copiedLabel": "Copied",
     "mailtoLabel": "Email Juan"
   },
+  "footer": {
+    "updatedLabel": "Updated"
+  },
   "notFound": {
     "title": "Page not found — Juan P. Echeverría",
     "code": "404",
