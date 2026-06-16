@@ -9,8 +9,9 @@ interface Props {
   role: string;
   pitch: string;
   cta: string;
+  cvHref: string;
 }
-const { name, role, pitch, cta } = Astro.props;
+const { name, role, pitch, cta, cvHref } = Astro.props;
 ---
 
 <section class="mx-auto flex min-h-[70vh] max-w-[768px] flex-col justify-center px-6">
@@ -39,9 +40,11 @@ const { name, role, pitch, cta } = Astro.props;
       class="inline-flex min-h-[44px] items-center text-fg hover:text-accent hover:underline focus-visible:text-accent focus-visible:underline"
       >GitHub</a
     >
-    {/* Lead action — accent treatment (Color #4). Internal-style placeholder. */}
+    {/* Lead action — accent treatment (Color #4). Same-origin CV download: the
+        `download` attr keeps it on-origin, so NO target="_blank" and NO rel (Pitfall 5). */}
     <a
-      href="#"
+      href={cvHref}
+      download
       class="inline-flex min-h-[44px] items-center rounded border border-accent px-4 font-semibold text-accent hover:bg-accent hover:text-accent-ink focus-visible:bg-accent focus-visible:text-accent-ink"
       >{cta}</a
     >

@@ -3,22 +3,47 @@
 // here. The locale is routed through the `lang` prop so later phases never retrofit it.
 // Pages provide the <nav>/<main>/<footer> landmarks (one <h1> in the hero).
 import { Font } from "astro:assets";
+import { getAbsoluteLocaleUrl } from "astro:i18n";
 import "../styles/global.css";
 
 interface Props {
   lang?: string;
   title?: string;
+  description?: string;
   skipLabel?: string;
 }
 
 const {
   lang = "es",
   title = "Juan P. Echeverría",
+  description = "",
   skipLabel = "Saltar al contenido",
 } = Astro.props;
 
-// Literal locale for the persistence island (I18N-03).
+// Literal locale for the persistence island (I18N-03) + the head metadata below.
 const locale = lang === "en" ? "en" : "es";
+
+// SEO/share head metadata (Phase 5). Every absolute URL derives from Astro.site (a
+// config constant) + the current path — never a hard-coded domain (one source of
+// truth, Pitfall 2). The non-null assertion keeps a future `site` removal failing loudly.
+const site = Astro.site!;
+const canonical = new URL(Astro.url.pathname, site).href;
+const esUrl = getAbsoluteLocaleUrl("es", "/");
+const enUrl = getAbsoluteLocaleUrl("en", "/");
+const ogLocale = locale === "en" ? "en_US" : "es_ES";
+const ogLocaleAlt = locale === "en" ? "es_ES" : "en_US";
+
+// JSON-LD Person (SEO-03). A build-time-constant, developer-controlled object — the
+// Astro-documented XSS-safe set:html use (no user input). The `#` LinkedIn placeholder
+// is filtered out of sameAs (the real URL lands in Phase 6).
+const person = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Juan P. Echeverría",
+  jobTitle: locale === "en" ? "Data Engineer" : "Ingeniero de datos",
+  url: site.href,
+  sameAs: ["https://github.com/juanpecheverria", "#"].filter((u) => u && u !== "#"),
+};
 ---
 
 <!doctype html>
@@ -32,6 +57,31 @@ const locale = lang === "en" ? "en" : "es";
     <Font cssVariable="--font-inter" preload />
     <Font cssVariable="--font-jetbrains-mono" />
     <title>{title}</title>
+
+    {/* SEO + share metadata (Phase 5). Text-only share card — OG image deferred (D-09 revised). */}
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="es" href={esUrl} />
+    <link rel="alternate" hreflang="en" href={enUrl} />
+    <link rel="alternate" hreflang="x-default" href={esUrl} />
+
+    {/* Open Graph — TEXT set only (no og:image; deferred, D-09 revised). */}
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Juan P. Echeverría" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content={ogLocale} />
+    <meta property="og:locale:alternate" content={ogLocaleAlt} />
+
+    {/* Twitter — TEXT card (summary, not summary_large_image; no twitter:image). */}
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
+    {/* JSON-LD Person (SEO-03). set:html carries only JSON.stringify of a build-time constant. */}
+    <script type="application/ld+json" set:html={JSON.stringify(person)} />
   </head>
   <body class="bg-bg text-fg font-sans">
     <a

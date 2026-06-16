@@ -1,5 +1,8 @@
 {
   "title": "Juan P. Echeverría — Data Engineer",
+  "seo": {
+    "description": "Data engineer with 5 years of experience building reliable data pipelines and platforms, focused on data quality and observability."
+  },
   "skipLink": "Skip to content",
   "nav": {
     "bio": "Bio",

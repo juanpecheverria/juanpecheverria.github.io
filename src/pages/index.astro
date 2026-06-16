@@ -17,10 +17,16 @@ import es from "../i18n/es.json";
 const enHome = getRelativeLocaleUrl("en", "/");
 ---
 
-<BaseLayout lang="es" title={es.title} skipLabel={es.skipLink}>
+<BaseLayout lang="es" title={es.title} description={es.seo.description} skipLabel={es.skipLink}>
   <Nav t={es.nav} switchHref={enHome} switchLabel="EN" switchLang="en" />
   <main>
-    <Hero name={es.hero.name} role={es.hero.role} pitch={es.hero.pitch} cta={es.hero.cta} />
+    <Hero
+      name={es.hero.name}
+      role={es.hero.role}
+      pitch={es.hero.pitch}
+      cta={es.hero.cta}
+      cvHref="/cv/Juan-Echeverria-CV-ES.pdf"
+    />
 
     <Section id="bio" kicker="01" title={es.sections.bio}>
       <Bio body={es.bio.body} />
