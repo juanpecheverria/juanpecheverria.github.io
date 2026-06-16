@@ -1,5 +1,8 @@
 {
   "title": "Juan P. Echeverría — Ingeniero de Datos",
+  "seo": {
+    "description": "Ingeniero de datos con 5 años de experiencia construyendo pipelines y plataformas de datos fiables, con foco en calidad de datos y observabilidad."
+  },
   "skipLink": "Saltar al contenido",
   "nav": {
     "bio": "Bio",
